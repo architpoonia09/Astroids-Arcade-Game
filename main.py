@@ -2,6 +2,8 @@ import pygame as pg
 from constants import *
 from logger import log_state
 from player import *
+from asteroid import *
+from asteroidfield import *
 
 def main():
     pg.init()
@@ -18,6 +20,10 @@ def main():
     drawable = pg.sprite.Group()
     Player.containers = (updatable, drawable)
     player1 = Player(x, y)
+    asteroids = pg.sprite.Group()
+    Asteroid.containers = (updatable, drawable, asteroids)
+    AsteroidField.containers = (updatable)
+    astroidfield = AsteroidField()
 
     while True:
         log_state()
