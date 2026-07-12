@@ -12,3 +12,4 @@ wheels/
 
 #files
 game_state.jsonl
+game_events.jsonl
