@@ -9,17 +9,20 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pg.time.Clock()
+    dt = 0.0
 
     while True:
         log_state()
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
-            
-    
-        screen.fill("black")
+
+        screen.fill("black")    
 
 
+        clock.tick(60)
+        dt = clock.tick(60) / 1000
         pg.display.flip()
             
 
