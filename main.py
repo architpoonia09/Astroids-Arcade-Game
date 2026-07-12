@@ -7,6 +7,7 @@ from player import *
 from asteroid import *
 from asteroidfield import *
 from logger import *
+from shot import *
 
 def main():
     pg.init()
@@ -27,6 +28,8 @@ def main():
     Asteroid.containers = (updatable, drawable, asteroids)
     AsteroidField.containers = (updatable)
     astroidfield = AsteroidField()
+    shots = pg.sprite.Group()
+    Shot.containers = (updatable, drawable, shots)
 
     while True:
         log_state()
