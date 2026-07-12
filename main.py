@@ -43,12 +43,23 @@ def main():
             drawa.draw(screen)
 
         for ast in asteroids:
+
+            for shot in shots:
+                if shot.collides_with(ast):
+                    log_event("asteroid_hit")
+                    ast.kill()
+                    shot.kill()
+                    break
+
             if player1.collides_with(ast):
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
-                return
+                return     
+        
+
        
+
         dt = clock.tick(60) / 1000
         pg.display.flip()
             
