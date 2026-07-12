@@ -1,7 +1,7 @@
 import pygame as pg
 from constants import *
 from logger import log_state
-
+import player
 
 def main():
     pg.init()
@@ -11,6 +11,10 @@ def main():
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pg.time.Clock()
     dt = 0.0
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+    player1 = player.Player(x, y)
+
 
     while True:
         log_state()
@@ -19,6 +23,7 @@ def main():
                 return
 
         screen.fill("black")    
+        player1.draw(screen)
 
 
         clock.tick(60)
