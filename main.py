@@ -1,7 +1,7 @@
 import pygame as pg
 from constants import *
 from logger import log_state
-import player
+from player import *
 
 def main():
     pg.init()
@@ -13,8 +13,11 @@ def main():
     dt = 0.0
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
-    player1 = player.Player(x, y)
 
+    updatable = pg.sprite.Group()
+    drawable = pg.sprite.Group()
+    Player.containers = (updatable, drawable)
+    player1 = Player(x, y)
 
     while True:
         log_state()
@@ -23,10 +26,10 @@ def main():
                 return
 
         screen.fill("black")    
-        player1.draw(screen)
-        player1.update(dt)
-
-        clock.tick(60)
+        updatable.update(dt)
+        for drawa in drawable:
+            drawa.draw(screen)
+       
         dt = clock.tick(60) / 1000
         pg.display.flip()
             
